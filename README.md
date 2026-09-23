@@ -19,8 +19,8 @@ install.packages(c("geocodebr", "sf", "jsonlite"))
 Depois, clone o repositório e execute:
 
 ```sh
-git clone URL_DO_REPOSITORIO
-cd "Transcrever videos"
+git clone https://github.com/vitorhugodsouzax/KMZ-CONVERTER.git
+cd KMZ-CONVERTER
 npm ci
 npm run build
 npm start

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2"><Document><name>Exemplo fictício de importação</name><Folder><name>Dados de demonstração</name>
+<Placemark><name>Imóvel de exemplo</name><ExtendedData><Data name="CEP"><value>01234-567</value></Data><Data name="Cidade"><value>São Paulo</value></Data><Data name="UF"><value>SP</value></Data><Data name="Bairro"><value>Bairro fictício</value></Data><Data name="Número"><value>80</value></Data><Data name="Tipo"><value>horizontal</value></Data></ExtendedData><Point><coordinates>-46.633308,-23.550520,760</coordinates></Point></Placemark>
+<Placemark><name>Faixa de exemplo</name><description><![CDATA[<table><tr><td>CEP</td><td>01234-567</td></tr><tr><td>N_inicio</td><td>10</td></tr><tr><td>N_fim</td><td>100</td></tr><tr><td>Cidade</td><td>São Paulo</td></tr></table>]]></description><LineString><coordinates>-46.633308,-23.550520,0 -46.634100,-23.551200,0 -46.635200,-23.551800,0</coordinates></LineString></Placemark>
+<Placemark><name>Área sem endereço</name><Polygon><outerBoundaryIs><LinearRing><coordinates>-46.64,-23.55,0 -46.63,-23.55,0 -46.63,-23.56,0 -46.64,-23.55,0</coordinates></LinearRing></outerBoundaryIs></Polygon></Placemark>
+</Folder></Document></kml>

@@ -1,0 +1,10 @@
+args <- commandArgs(trailingOnly = TRUE)
+if (length(args) != 2) stop("Uso: geocode-reverse.R entrada.json saida.json")
+suppressPackageStartupMessages({ library(geocodebr); library(sf); library(jsonlite) })
+points <- jsonlite::fromJSON(args[[1]], simplifyDataFrame = TRUE)
+if (nrow(points) == 0) { jsonlite::write_json(data.frame(), args[[2]], dataframe = "rows", auto_unbox = TRUE); quit(status = 0) }
+spatial <- sf::st_as_sf(points, coords = c("lon", "lat"), crs = 4674, remove = FALSE)
+result <- geocodebr::geocode_reverso(spatial, dist_max = 1000, verboso = FALSE, cache = TRUE, n_cores = 1)
+result <- sf::st_drop_geometry(result)
+keep <- intersect(c("id", "estado", "municipio", "logradouro", "numero", "cep", "localidade", "distancia_metros"), names(result))
+jsonlite::write_json(result[, keep, drop = FALSE], args[[2]], dataframe = "rows", na = "null", auto_unbox = TRUE, digits = 10)

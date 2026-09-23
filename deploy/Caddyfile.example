@@ -1,0 +1,15 @@
+# Replace with a free DNS hostname pointing to the server, before starting.
+YOUR_HOSTNAME {
+    basic_auth {
+        pessoa1 HASH_1
+        pessoa2 HASH_2
+        pessoa3 HASH_3
+    }
+    reverse_proxy app:3000 {
+        # Overwrites any identity header supplied by the browser.
+        header_up X-Authenticated-User {http.auth.user.id}
+        transport http {
+            response_header_timeout 110m
+        }
+    }
+}

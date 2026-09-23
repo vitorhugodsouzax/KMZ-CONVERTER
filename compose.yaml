@@ -1,0 +1,33 @@
+services:
+  app:
+    build: .
+    restart: unless-stopped
+    init: true
+    environment:
+      PROXY_AUTH: "1"
+    volumes:
+      - geocode-cache:/home/node/.cache
+    # Only Caddy can reach the app; never publish port 3000 with proxy auth.
+    networks: [backend]
+    logging:
+      driver: json-file
+      options: { max-size: "10m", max-file: "3" }
+  caddy:
+    image: caddy:2
+    restart: unless-stopped
+    ports: ["80:80", "443:443"]
+    volumes:
+      - ./deploy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy-data:/data
+      - caddy-config:/config
+    networks: [backend]
+    depends_on: [app]
+    logging:
+      driver: json-file
+      options: { max-size: "10m", max-file: "3" }
+networks:
+  backend:
+volumes:
+  geocode-cache:
+  caddy-data:
+  caddy-config:

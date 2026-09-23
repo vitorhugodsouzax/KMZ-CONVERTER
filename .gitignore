@@ -1,0 +1,9 @@
+node_modules/
+.r-library/
+dist/
+public/app.js
+.env
+.impeccable/review/
+test-results/
+*.log
+deploy/Caddyfile
